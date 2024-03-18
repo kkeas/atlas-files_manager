@@ -8,15 +8,23 @@ class DBClient {
 
     const url = `mongodb://${host}:${port}/${database}`;
 
-    this.mongoClient = new MongoClient(url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+     // create db
+    MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
+        if (client) {
+          this.db = client.db(database);
+          this.users = this.db.collection('users');
+          this.files = this.db.collection('files');
+        }
+        if (err) {
+          console.log(err);
+          this.db = null;
+        }
         });
     }
 
     isAlive() {
         return this.MongoClient.isConnected();
-    }
+    };
 
     async nbUsers() {
         return await this.users.countDocuments({});
@@ -25,6 +33,7 @@ class DBClient {
     async nbFiles() {
         return await this.nbFiles.countDocuments({});
     }
+
 }
 
 //export
