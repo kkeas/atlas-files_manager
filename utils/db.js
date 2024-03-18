@@ -8,7 +8,7 @@ class DBClient {
 
     const url = `mongodb://${host}:${port}/${database}`;
 
-    this.MongoClient = new MongoClient(url, {
+    this.mongoClient = new MongoClient(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
         });
