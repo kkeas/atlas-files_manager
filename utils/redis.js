@@ -19,7 +19,7 @@ class RedisClient {
     }
 
     async set(key, value, duration) {
-        return this.client.set(key, value, 'EX',  duration)
+        return this.client.set(key, value, 'EX',  duration);
     }
 
     async get(key) {
@@ -27,11 +27,10 @@ class RedisClient {
       }
 
     async del(key) {
-        return this.client.delAsync(key);
+        return this.delAsync(key);
     }
 }
 
-
 //export 
-const redisClient = new RedisClient()
-module.exports = redisClient
+const redisClient = new RedisClient();
+module.exports = redisClient;
