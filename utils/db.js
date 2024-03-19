@@ -24,7 +24,7 @@ class DBClient {
 
     isAlive() {
         return !!this.db
-    };
+    }
 
     async nbUsers() {
         const nbUsers = await this.users.countDocuments({});
