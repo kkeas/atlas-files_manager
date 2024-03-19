@@ -6,3 +6,5 @@ const AppController = require(/controllers/AppController)
 
 Router.get('/status', AppController.getStatus)
 Router.get('/stats', AppController.getStats)
+
+module.exports = router;
