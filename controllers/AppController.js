@@ -1,20 +1,20 @@
-const redis = require('/routes/redis')
-const db = require('/routes/db')
+const redis = require('../utils/redis')
+const db = require('../utils/db')
 
 class AppController {
     
     static getStatus(request, response) {
         const status =
         {
-            "redis": isRedisAlive(),
-            "db": isDatabaseAlive()
+            "redis": redis.isAlive(),
+            "db": db.isAlive()
         };
         return response.status(200).send(status)
     }
 
     static async getStats(request, response) {
-        const users = await dbClient.nbUsers();
-        const files = await dbClient.nbFiles();
+        const users = await db.nbUsers();
+        const files = await db.nbFiles();
         const stats = { users, files };
         response.status(200).send(stats);
     }

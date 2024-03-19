@@ -6,7 +6,7 @@ const router = express.Router();
 
 // accessing endpoints
 
-Router.get('/status', AppController.getStatus)
-Router.get('/stats', AppController.getStats)
+router.get('/status', AppController.getStatus)
+router.get('/stats', AppController.getStats)
 
 module.exports = router;
