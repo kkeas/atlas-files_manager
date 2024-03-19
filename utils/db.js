@@ -8,7 +8,7 @@ class DBClient {
 
     const url = `mongodb://${host}:${port}/${database}`;
 
-     // create db
+    // create db
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
         if (client) {
           this.db = client.db(database);
@@ -23,15 +23,17 @@ class DBClient {
     }
 
     isAlive() {
-        return this.MongoClient.isConnected();
+        return !!this.db
     };
 
     async nbUsers() {
-        return await this.users.countDocuments({});
+        const nbUsers = await this.users.countDocuments({});
+        return nbUsers
     }
 
     async nbFiles() {
-        return await this.nbFiles.countDocuments({});
+        const nbFiles = await this.files.countDocuments({});
+        return nbFiles
     }
 
 }
