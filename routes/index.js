@@ -1,6 +1,8 @@
 const express = require('express')
-
 const AppController = require(/controllers/AppController)
+
+// declare router
+const router = express.Router();
 
 // accessing endpoints
 
