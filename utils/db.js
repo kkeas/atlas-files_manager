@@ -6,7 +6,7 @@ class DBClient {
     const port = process.env.DB_PORT || 27017;
     const database = process.env.DB_DATABASE || 'files_manager';
 
-    const url = `mongodb://${host}:${port}/${database}`;
+    const url = `mongodb+srv://lkeas100:WG9FNSwvZ0cHXXl8@filesmanager.xrwhcdw.mongodb.net/?retryWrites=true&w=majority&appName=FilesManager`;
 
     // create db
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
