@@ -1,9 +1,10 @@
 // user controller for express api
 const sha1 = require('sha1');
 const mongo = require('mongodb');
-const dbClient = require('../utils/db');
+// const dbClient = require('../utils/db');
 const Redis = require('../utils/redis');
 
+import { dbClient } from '../utils/db'
 class UsersController {
   static postNew(req, res) {
     (async () => {
@@ -13,6 +14,7 @@ class UsersController {
       if (!email) return res.status(400).json({ error: 'Missing email' });
       if (!password) return res.status(400).json({ error: 'Missing password' });
       // check that the user doesn't exist already
+      console.log(dbClient)
       const user = await dbClient.db.collection('users').findOne({ email });
       if (user) return res.status(400).json({ error: 'Already exist' });
       // hash the user's password and save them to db

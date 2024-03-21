@@ -4,9 +4,10 @@ class DBClient {
   constructor() {
     const host = process.env.DB_HOST || 'localhost';
     const port = process.env.DB_PORT || 27017;
-    const database = process.env.DB_DATABASE || 'files_manager';
+    const database = process.env.DB_DATABASE || 'filesManager';
 
     const url = `mongodb+srv://lkeas100:WG9FNSwvZ0cHXXl8@filesmanager.xrwhcdw.mongodb.net/?retryWrites=true&w=majority&appName=FilesManager`;
+    // const url = `mongodb://${host}:${port}/${database}`;
 
     // create db
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
